@@ -732,4 +732,841 @@
 
         /* Skills grid */
         .skills-grid {
-            display
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+
+        .contact-grid a {
+            color: #22c55e;
+            text-decoration: none;
+        }
+
+        .contact-grid a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            margin-top: 16px;
+            display: grid;
+            gap: 10px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            border-radius: 10px;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            padding: 8px 10px;
+            font-size: 13px;
+            background: rgba(15, 23, 42, 0.9);
+            color: #e5e7eb;
+        }
+
+        body.light .contact-form input,
+        body.light .contact-form textarea {
+            background: #ffffff;
+            color: #020617;
+            border-color: #d1d5db;
+        }
+
+        .contact-form textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        /* Gallery */
+        .gallery-media {
+            margin-top: 12px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .gallery-media img,
+        .gallery-media video {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+
+        footer {
+            margin-top: 28px;
+            font-size: 11px;
+            color: var(--muted-dark);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        body.light footer {
+            color: var(--muted-light);
+        }
+
+        footer a {
+            color: #22c55e;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-actions {
+                align-self: stretch;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+<canvas id="matrixCanvas"></canvas>
+<div class="overlay-gradient"></div>
+<div class="noise"></div>
+
+<div class="shell">
+    <header>
+        <div class="brand">
+            <div class="brand-logo">Z</div>
+            <div class="brand-text">
+                <span>Cyber · AI · Automation</span>
+                <span>Zeeshan — Full‑Stack, Security & AI Engineer</span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <div class="pill">
+                <span class="status-dot"></span>
+                <span>Available for remote & freelance missions</span>
+            </div>
+            <div class="toggle" id="themeToggle">
+                <button data-theme="dark" class="active">
+                    🌑 <span>Dark</span>
+                </button>
+                <button data-theme="light">
+                    ☀️ <span>Light</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Left: Hero + projects + skills + contact + gallery -->
+        <section>
+            <div class="panel">
+                <div class="panel-inner">
+                    <div class="hero-eyebrow">
+                        <span class="key">root@zeeshan</span>
+                        <span>Cyber‑driven developer · AI specialist · CRM & automation engineer</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Building <span class="highlight">secure, intelligent</span> systems for the modern tech stack.
+                    </h1>
+                    <p class="hero-subtitle">
+                        I’m Zeeshan, a developer, AI specialist and cyber‑minded engineer with strong foundations in
+                        networking, security, full‑stack development, testing, RPA, CRM systems, data analytics and
+                        multi‑OS environments. I design systems that feel like a hacker’s playground—but behave like
+                        production‑grade infrastructure.
+                    </p>
+
+                    <div class="hero-tags">
+                        <span class="hero-tag">Network & Infrastructure Security</span>
+                        <span class="hero-tag">Full‑Stack Web & CRM</span>
+                        <span class="hero-tag">AI · ML · Automation · RPA</span>
+                        <span class="hero-tag">Testing & QA Pipelines</span>
+                        <span class="hero-tag">Data Analytics · Power BI · Power Apps</span>
+                        <span class="hero-tag">Firebase · Flutter · Multi‑OS</span>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            View Projects
+                            <span>↘</span>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost">
+                            Contact for collaboration
+                        </a>
+                    </div>
+
+                    <div class="hero-meta">
+                        <span><strong>Focus:</strong> Secure, testable, AI‑powered systems</span>
+                        <span class="dot"></span>
+                        <span><strong>Location:</strong> Fujairah, UAE · Remote‑friendly</span>
+                        <span class="dot"></span>
+                        <span><strong>Stack:</strong> Web · AI · RPA · Analytics · OS internals</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects -->
+            <div class="section" id="projects">
+                <div class="section-header">
+                    <div>
+                        <h2 class="section-title">Highlighted projects</h2>
+                        <p class="section-subtitle">
+                            A mix of security‑flavoured tools, CRM, automation, testing portals, and practical systems.
+                        </p>
+                    </div>
+                    <div class="filters">
+                        <span class="filter-pill active" data-filter="all">All</span>
+                        <span class="filter-pill" data-filter="security">Security</span>
+                        <span class="filter-pill" data-filter="automation">Automation / RPA</span>
+                        <span class="filter-pill" data-filter="web">Web & Portals</span>
+                    </div>
+                </div>
+
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- 1 -->
+                    <article class="project-card" data-tags="security web">
+                        <div class="project-top">
+                            <h3 class="project-name">Online Game Testing Portal</h3>
+                            <span class="project-tag">Web · QA</span>
+                        </div>
+                        <p class="project-desc">
+                            A browser‑based portal for structured game testing—test cases, bug tracking, session logs,
+                            and performance notes in one place.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">HTML</span>
+                                <span class="stack-pill">CSS</span>
+                                <span class="stack-pill">JavaScript</span>
+                                <span class="stack-pill">REST API</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 2 -->
+                    <article class="project-card" data-tags="web">
+                        <div class="project-top">
+                            <h3 class="project-name">Student Management System</h3>
+                            <span class="project-tag">Admin · Dashboard</span>
+                        </div>
+                        <p class="project-desc">
+                            A clean web dashboard to manage students, attendance, grades, and reports with role‑based access
+                            and audit‑friendly logs.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">HTML</span>
+                                <span class="stack-pill">CSS</span>
+                                <span class="stack-pill">JS</span>
+                                <span class="stack-pill">SQL</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 3 -->
+                    <article class="project-card" data-tags="web automation">
+                        <div class="project-top">
+                            <h3 class="project-name">CRM Automation Suite</h3>
+                            <span class="project-tag">CRM · RPA</span>
+                        </div>
+                        <p class="project-desc">
+                            A set of CRM automations for lead routing, follow‑up reminders, and pipeline health dashboards
+                            with analytics.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">JS</span>
+                                <span class="stack-pill">RPA</span>
+                                <span class="stack-pill">Power Apps</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 4 -->
+                    <article class="project-card" data-tags="automation">
+                        <div class="project-top">
+                            <h3 class="project-name">RPA – Repetitive Task Bot Suite</h3>
+                            <span class="project-tag">Automation</span>
+                        </div>
+                        <p class="project-desc">
+                            A collection of bots for form‑filling, report downloads, and data cleanup across multiple web
+                            portals and OS tools.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">RPA</span>
+                                <span class="stack-pill">Python</span>
+                                <span class="stack-pill">Browser Automation</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 5 -->
+                    <article class="project-card" data-tags="security web">
+                        <div class="project-top">
+                            <h3 class="project-name">Secure Login Sandbox</h3>
+                            <span class="project-tag">Auth · Demo</span>
+                        </div>
+                        <p class="project-desc">
+                            A demo app to showcase secure login flows, rate‑limiting, lockouts, and basic anomaly detection
+                            for authentication.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">HTML</span>
+                                <span class="stack-pill">JS</span>
+                                <span class="stack-pill">JWT</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 6 -->
+                    <article class="project-card" data-tags="web">
+                        <div class="project-top">
+                            <h3 class="project-name">API Testing Console</h3>
+                            <span class="project-tag">Testing</span>
+                        </div>
+                        <p class="project-desc">
+                            A browser‑based API client to quickly hit endpoints, inspect responses, and save test collections
+                            for QA runs.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">JS</span>
+                                <span class="stack-pill">Fetch API</span>
+                                <span class="stack-pill">JSON</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 7 -->
+                    <article class="project-card" data-tags="automation security">
+                        <div class="project-top">
+                            <h3 class="project-name">Log Anomaly Highlighter</h3>
+                            <span class="project-tag">Security · Ops</span>
+                        </div>
+                        <p class="project-desc">
+                            A lightweight tool to parse system and app logs, highlight suspicious patterns, and export
+                            findings for incident review.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">Python</span>
+                                <span class="stack-pill">Regex</span>
+                                <span class="stack-pill">CLI + Web UI</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 8 -->
+                    <article class="project-card" data-tags="web">
+                        <div class="project-top">
+                            <h3 class="project-name">Multi‑OS Tools Dashboard</h3>
+                            <span class="project-tag">OS · Tools</span>
+                        </div>
+                        <p class="project-desc">
+                            A central dashboard to document and launch frequently used Linux/Windows commands, scripts, and
+                            admin tools.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">HTML</span>
+                                <span class="stack-pill">CSS</span>
+                                <span class="stack-pill">JS</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 9 -->
+                    <article class="project-card" data-tags="security">
+                        <div class="project-top">
+                            <h3 class="project-name">Port Scanner Web UI</h3>
+                            <span class="project-tag">Security</span>
+                        </div>
+                        <p class="project-desc">
+                            A simple web interface over a backend scanner to quickly map open ports and basic service info
+                            on internal hosts.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">JS</span>
+                                <span class="stack-pill">Python</span>
+                                <span class="stack-pill">Sockets</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 10 -->
+                    <article class="project-card" data-tags="automation web">
+                        <div class="project-top">
+                            <h3 class="project-name">Browser Form Auto‑Filler</h3>
+                            <span class="project-tag">RPA · Web</span>
+                        </div>
+                        <p class="project-desc">
+                            A small automation utility to auto‑fill repetitive web forms with saved profiles and validation
+                            checks.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">RPA</span>
+                                <span class="stack-pill">JS</span>
+                                <span class="stack-pill">Browser APIs</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 11 -->
+                    <article class="project-card" data-tags="web">
+                        <div class="project-top">
+                            <h3 class="project-name">Minimal Bug Tracker</h3>
+                            <span class="project-tag">Testing · QA</span>
+                        </div>
+                        <p class="project-desc">
+                            A focused bug tracker for small teams—status lanes, severity tags, and test‑case linking without
+                            heavy overhead.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">HTML</span>
+                                <span class="stack-pill">CSS</span>
+                                <span class="stack-pill">JS</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 12 -->
+                    <article class="project-card" data-tags="security automation">
+                        <div class="project-top">
+                            <h3 class="project-name">Credential Hygiene Checker</h3>
+                            <span class="project-tag">Security</span>
+                        </div>
+                        <p class="project-desc">
+                            A tool to scan password policies, weak patterns, and reused credentials in test environments
+                            (no real data).
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">Python</span>
+                                <span class="stack-pill">Regex</span>
+                                <span class="stack-pill">Reports</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 13 -->
+                    <article class="project-card" data-tags="web">
+                        <div class="project-top">
+                            <h3 class="project-name">Tech Learning Tracker</h3>
+                            <span class="project-tag">Personal · Web</span>
+                        </div>
+                        <p class="project-desc">
+                            A personal dashboard to track topics learned across networking, security, dev, AI, and OS—like a
+                            living knowledge map.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">HTML</span>
+                                <span class="stack-pill">CSS</span>
+                                <span class="stack-pill">JS</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 14 -->
+                    <article class="project-card" data-tags="automation">
+                        <div class="project-top">
+                            <h3 class="project-name">Report Generation Pipeline</h3>
+                            <span class="project-tag">Automation · QA</span>
+                        </div>
+                        <p class="project-desc">
+                            A pipeline to collect test results, logs, and screenshots, then auto‑generate clean PDF/HTML
+                            reports for stakeholders.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">Python</span>
+                                <span class="stack-pill">RPA</span>
+                                <span class="stack-pill">HTML Reports</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 15 -->
+                    <article class="project-card" data-tags="security web">
+                        <div class="project-top">
+                            <h3 class="project-name">Secure Notes Vault (Local)</h3>
+                            <span class="project-tag">Security · Personal</span>
+                        </div>
+                        <p class="project-desc">
+                            A local‑only encrypted notes app for storing commands, configs, and sensitive snippets used in
+                            labs and testing.
+                        </p>
+                        <div class="project-meta">
+                            <div class="project-stack">
+                                <span class="stack-pill">JS</span>
+                                <span class="stack-pill">Crypto APIs</span>
+                                <span class="stack-pill">LocalStorage</span>
+                            </div>
+                            <div class="project-link">
+                                <span>View details</span>
+                                <svg viewBox="0 0 16 16" fill="none">
+                                    <path d="M4 12L12 4M7 4H12V9" stroke="#22c55e" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <section class="section">
+                <div class="panel">
+                    <div class="panel-inner">
+                        <h2 class="section-title">Technical Skills</h2>
+                        <p class="section-subtitle">Languages, tools and domains I actively work with.</p>
+
+                        <div class="skills-grid">
+                            <span class="stack-pill">C</span>
+                            <span class="stack-pill">C++</span>
+                            <span class="stack-pill">C#</span>
+                            <span class="stack-pill">Java</span>
+                            <span class="stack-pill">Python</span>
+                            <span class="stack-pill">PHP</span>
+                            <span class="stack-pill">Swift</span>
+                            <span class="stack-pill">Rust</span>
+                            <span class="stack-pill">R</span>
+                            <span class="stack-pill">Ruby</span>
+                            <span class="stack-pill">Perl</span>
+                            <span class="stack-pill">SQL</span>
+                            <span class="stack-pill">Bash</span>
+                            <span class="stack-pill">HTML</span>
+                            <span class="stack-pill">CSS</span>
+                            <span class="stack-pill">JavaScript</span>
+                            <span class="stack-pill">DSA</span>
+                            <span class="stack-pill">AI</span>
+                            <span class="stack-pill">Machine Learning</span>
+                            <span class="stack-pill">Cyber Security</span>
+                            <span class="stack-pill">Ethical Hacking</span>
+                            <span class="stack-pill">Power BI</span>
+                            <span class="stack-pill">Power Apps</span>
+                            <span class="stack-pill">Firebase</span>
+                            <span class="stack-pill">Flutter</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery -->
+            <section class="section">
+                <div class="panel">
+                    <div class="panel-inner">
+                        <h2 class="section-title">Gallery</h2>
+                        <p class="section-subtitle">A quick visual glimpse into my work and environment.</p>
+
+                        <div class="gallery-media">
+                            <!-- Replace src with your actual image/video paths in the repo -->
+                            <img src="assets/zeeshan-photo.jpg" alt="Zeeshan portrait">
+                            <video controls>
+                                <source src="assets/zeeshan-demo.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact -->
+            <section id="contact" class="section">
+                <div class="panel">
+                    <div class="panel-inner">
+                        <h2 class="section-title">Contact Me</h2>
+                        <p class="section-subtitle">Let’s connect and build something powerful.</p>
+
+                        <div class="contact-grid">
+                            <p><strong>Email:</strong> zeeshan@example.com</p>
+                            <p><strong>WhatsApp:</strong> +971-XX-XXXXXXX</p>
+                            <p><strong>Phone:</strong> +971-XX-XXXXXXX</p>
+                            <p><strong>Instagram:</strong> <a href="https://instagram.com/your_instagram" target="_blank">@your_instagram</a></p>
+                            <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+                            <p><strong>Location:</strong> Fujairah, UAE</p>
+                        </div>
+
+                        <h3 style="margin-top:20px; font-size:14px;">Send a Message</h3>
+                        <form class="contact-form" onsubmit="event.preventDefault(); alert('This is a demo form. Connect via email/WhatsApp.');">
+                            <input type="text" placeholder="Your Name" required>
+                            <input type="email" placeholder="Your Email" required>
+                            <textarea placeholder="Your Message" required></textarea>
+                            <button class="btn btn-primary" type="submit">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Right: terminal / profile -->
+        <aside>
+            <div class="panel">
+                <div class="panel-inner terminal">
+                    <div class="terminal-header">
+                        <div class="traffic-lights">
+                            <span class="traffic-dot red"></span>
+                            <span class="traffic-dot yellow"></span>
+                            <span class="traffic-dot green"></span>
+                        </div>
+                        <span class="terminal-title">/home/zeeshan/profile.sh</span>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-body-inner" id="terminalOutput">
+                            <div class="terminal-line terminal-comment">
+                                <span># Zeeshan — cyber‑minded developer, AI specialist & automation engineer</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">➜</span>
+                                <span>whoami</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">↳</span>
+                                <span class="terminal-value">developer · security‑aware · AI‑driven · automation‑focused</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">➜</span>
+                                <span>skills --core</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">↳</span>
+                                <span class="terminal-key">
+                                    networking, security, development, testing, RPA, CRM, AI, ML, data analytics
+                                </span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">➜</span>
+                                <span>stack --high‑level</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">↳</span>
+                                <span class="terminal-value">
+                                    web · APIs · dashboards · automation · Power BI · Power Apps · Firebase · Flutter
+                                </span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">➜</span>
+                                <span>security --focus</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">↳</span>
+                                <span class="terminal-value">
+                                    cyber security · ethical hacking · secure design · hardening · monitoring
+                                </span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">➜</span>
+                                <span>contact --email</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">↳</span>
+                                <span class="terminal-value">zeeshan@example.com</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">➜</span>
+                                <span>status --now</span>
+                            </div>
+                            <div class="terminal-line">
+                                <span class="terminal-prefix">↳</span>
+                                <span class="terminal-value">open to interesting problems & serious builds</span>
+                                <span class="cursor"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <span>© <span id="year"></span> Zeeshan. Crafted with HTML, CSS, and JavaScript.</span>
+        <span>Inspired by cyber labs, terminals, and real‑world engineering.</span>
+    </footer>
+</div>
+
+<script>
+    // Year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Theme toggle
+    const body = document.body;
+    const themeButtons = document.querySelectorAll("#themeToggle button");
+
+    function setTheme(theme) {
+        if (theme === "light") {
+            body.classList.add("light");
+        } else {
+            body.classList.remove("light");
+        }
+        themeButtons.forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.theme === theme);
+        });
+        localStorage.setItem("zeeshan-theme", theme);
+    }
+
+    const savedTheme = localStorage.getItem("zeeshan-theme") || "dark";
+    setTheme(savedTheme);
+
+    themeButtons.forEach(btn => {
+        btn.addEventListener("click", () => setTheme(btn.dataset.theme));
+    });
+
+    // Project filter
+    const filterPills = document.querySelectorAll(".filter-pill");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    filterPills.forEach(pill => {
+        pill.addEventListener("click", () => {
+            const filter = pill.dataset.filter;
+            filterPills.forEach(p => p.classList.remove("active"));
+            pill.classList.add("active");
+
+            projectCards.forEach(card => {
+                const tags = card.dataset.tags.split(" ");
+                if (filter === "all" || tags.includes(filter)) {
+                    card.style.display = "";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        });
+    });
+
+    // Matrix background
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx = canvas.getContext("2d");
+    let width, height, columns, drops;
+    const characters = "01#@$%&*{}[]<>/\\=+_";
+    const fontSize = 14;
+
+    function initMatrix() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        columns = Math.floor(width / fontSize);
+        drops = Array(columns).fill(1);
+    }
+
+    function drawMatrix() {
+        if (!ctx) return;
+        ctx.fillStyle = "rgba(2, 6, 23, 0.18)";
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.fillStyle = "#22c55e";
+        ctx.font = fontSize + "px monospace";
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = characters.charAt(Math.floor(Math.random() * characters.length));
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
+
+            ctx.fillText(text, x, y);
+
+            if (y > height && Math.random() > 0.96) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+
+        requestAnimationFrame(drawMatrix);
+    }
+
+    window.addEventListener("resize", initMatrix);
+    initMatrix();
+    requestAnimationFrame(drawMatrix);
+</script>
+</body>
+</html>
