@@ -1,0 +1,35 @@
+/* CSS styles extracted from index.html */ 
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+}
+
+.nav li {
+    margin: 0 15px;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.footer {
+    background: #555;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
